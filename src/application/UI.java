@@ -30,22 +30,9 @@ public class UI {
     public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
     public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m"; */
 
-    //clearScreen only works on Windows terminal
     public static void clearScreen(){
-
-        try{
-            final String os = System.getProperty("os.name");
-
-            if (os.contains("Windows")){
-                Runtime.getRuntime().exec("cls");
-
-            }else{
-                Runtime.getRuntime().exec("clear");
-            }
-        }
-        catch (final Exception e){
-            //  Handle Exceptions
-        }
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
     }
 
     public static ChessPosition readChessPosition(Scanner sc){
